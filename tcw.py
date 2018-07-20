@@ -6,7 +6,7 @@ for d in [2015, 2016, 2017]:
     server.retrieve({
         "class": "ei",
         "dataset": "interim",
-        "date": "{y}-06-01/to/{y}-09-30".format(y=d),
+        "date": "{y}-06-01/to/{y}-12-31".format(y=d),
         "expver": "1",
         "grid": "0.25/0.25",
         "levtype": "sfc",
@@ -17,5 +17,4 @@ for d in [2015, 2016, 2017]:
         "area": "11/70/5/76",
         "type": "an",
         "target": "tcwv_{y}.grib".format(y=d),
-        # "format": "netcdf",
     })

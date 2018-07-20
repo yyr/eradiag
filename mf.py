@@ -1,4 +1,7 @@
 #!/usr/bin/env python
+# eastward vapour flux
+# northward vapour flux
+
 from ecmwfapi import ECMWFDataServer
 server = ECMWFDataServer()
 for d in [2015, 2016, 2017]:
@@ -6,11 +9,11 @@ for d in [2015, 2016, 2017]:
     server.retrieve({
         "class": "ei",
         "dataset": "interim",
-        "date": "{y}-06-01/to/{y}-09-30".format(y=d),
+        "date": "{y}-06-01/to/{y}-12-31".format(y=d),
         "expver": "1",
         "grid": "0.25/0.25",
         "levtype": "sfc",
-        "param": "84.162",
+        "param": "71.162/72.162",
         "step": "0",
         # "3,6,9,12",
         "stream": "oper",
