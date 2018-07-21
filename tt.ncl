@@ -5,6 +5,10 @@ load "./eradiag.ncl"
 
 begin
   ys = (/2015, 2016, 2017/)
+
+  ao = "tt.txt"
+  system("rm " + ao)
+
   do it = 0, 2, 1
     type = "pdf"
     fn = "tt_" + ys(it) + "d"
@@ -12,6 +16,8 @@ begin
 
     fname = fn + ".nc"
     fh = addfile(fname, "r")
+
+    t = fh->time
 
     vname = "t"
     var = fh->$vname$
@@ -52,6 +58,7 @@ begin
     res@tmYLOn = False
 
     plot = gsn_csm_y(wks, var_a, res)
+    write_table(ao, "a", [/cd_calendar(t, -2), var_a/], "%8d%10.2f")
     delete(res)
   end do
 end
